@@ -69,71 +69,72 @@ public class ReviewHandler {
   */
   public void findRealClass(File file, File[] data) throws FileNotFoundException
   {
-    try {
+    try 
+    {
         for(File review : data)
         {
            if(review != null)
            {
              
-             /**
-             *@param negcount keeps track of the number of negitive reviews
-             *@param poscount keeps track of the number of positive reviews
-             * both of these help keep track of the review class
-             */
-            int negCount = 0; 
-            int posCount = 0;
-        
-            Scanner scnr = new Scanner(review);
-            String sentence = scnr.nextLine(); // grab the line from the review
-            sentence = sentence.replaceAll("\\p{Punct}", ""); // remove punctuation
-            sentence = sentence.toLowerCase(); // convert everything to lowercase
-            String line[] = sentence.split("\\s+"); // put each word into an array
-        
-            for(int i = 0; i < line.length; i++)
-            {
-              if(positiveWords.contains(line[i])) // if the word is positive
+               /**
+               *@param negcount keeps track of the number of negitive reviews
+               *@param poscount keeps track of the number of positive reviews
+               * both of these help keep track of the review class
+               */
+              int negCount = 0; 
+              int posCount = 0;
+
+              Scanner scnr = new Scanner(review);
+              String sentence = scnr.nextLine(); // grab the line from the review
+              sentence = sentence.replaceAll("\\p{Punct}", ""); // remove punctuation
+              sentence = sentence.toLowerCase(); // convert everything to lowercase
+              String line[] = sentence.split("\\s+"); // put each word into an array
+
+              for(int i = 0; i < line.length; i++)
               {
-                  posCount++;
+                if(positiveWords.contains(line[i])) // if the word is positive
+                {
+                    posCount++;
+                }
+                else if(negativeWords.contains(line[i])) // if word is negative
+                {
+                    negCount++;
+                }
+
               }
-              else if(negativeWords.contains(line[i])) // if word is negative
+              scnr.close();
+              // see if review is negative or positive
+              if(posCount > negCount)
               {
-                  negCount++;
+                  if(file.getName().equals("pos"))
+                  {
+                    correctPosReviews++; // predicted correctly
+                    totalPosReviews++; // keep track of total txt files in folder
+                    System.out.println(review.getName() + " Real Class: Positive \nPredicted Class: Positive");
+
+                  }
+                  else if(file.getName().equals("neg"))
+                  {
+                      totalNegReviews++; // keep track of total txt files in folder
+                      System.out.println(review.getName() + " Real Class: Positive \nPredicted Class: Negative");
+                  }
               }
-               
-            }
-            scnr.close();
-            // see if review is negative or positive
-            if(posCount > negCount)
-            {
-            if(file.getName().equals("pos"))
-            {
-              correctPosReviews++; // predicted correctly
-              totalPosReviews++; // keep track of total txt files in folder
-              System.out.println(review.getName() + " Real Class: Positive \nPredicted Class: Positive");
-            
-            }
-            else if(file.getName().equals("neg"))
-            {
-                totalNegReviews++; // keep track of total txt files in folder
-                System.out.println(review.getName() + " Real Class: Positive \nPredicted Class: Negative");
-            }
-        }
-            else
-            {
-              if(file.getName().equals("pos"))
+              else
               {
-                totalPosReviews++; // keep track of total txt files in folder
-                System.out.println(review.getName() + " Real Class: Negative \nPredicted Class: Positive");
-              }
-              else if(file.getName().equals("neg"))
-              {
-                totalNegReviews++; // keep track of total txt files in folder
-                correctNegReviews++; // predicted correctly
-                System.out.println(review.getName() + " Real Class: Negative \nPredicted Class: Negative");
-              }
-              }
+                  if(file.getName().equals("pos"))
+                  {
+                    totalPosReviews++; // keep track of total txt files in folder
+                    System.out.println(review.getName() + " Real Class: Negative \nPredicted Class: Positive");
+                  }
+                  else if(file.getName().equals("neg"))
+                  {
+                    totalNegReviews++; // keep track of total txt files in folder
+                    correctNegReviews++; // predicted correctly
+                    System.out.println(review.getName() + " Real Class: Negative \nPredicted Class: Negative");
+                  }
+               }
             }
-          }
+         }
     }
     catch(Exception e)
       {

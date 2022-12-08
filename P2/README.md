@@ -4,7 +4,7 @@
 
 ## Tasks:
 
-Create 20 JUnit tests in total to test the methods of shoppingCart/*.java classes in src/main/java/project2
+Create 20 JUnit tests in total to test the methods of shoppingCart/*.java classes
 
 1.	Implemented the JUnit tests to test  
     *  - ShoppingCart.java (JUnit tests)

@@ -51,7 +51,7 @@ public class ReviewHandler {
           {
             negativeWords.add(word);
           }
-          }
+        }
           scnr.close();
     }
     catch(Exception e)

@@ -158,12 +158,12 @@ public class ReviewHandler {
     
     System.out.println("\nNumber of Negative Reviews: " + (int)(totalNegReviews));
     System.out.println("Correct Classified: " + (int) (correctNegReviews) + "\nMisclassified: " + (int)(totalNegReviews - correctNegReviews));
-    System.out.printf("Correct classification rate: %.1f%s \n", ((correctNegReviews / totalNegReviews) * 100),percent);
+    System.out.printf("Correct classification rate: %.1f%s \n", ((correctNegReviews / totalNegReviews) * 100), percent);
     
     System.out.println("\nNumber of all reviews: " + (int)(totalNegReviews + totalPosReviews));
     System.out.println("Correct classified: " + (int)(correctPosReviews + correctNegReviews));
     System.out.println("Misclassified: " + (int)((totalPosReviews - correctPosReviews) + (totalNegReviews - correctNegReviews)));
-    System.out.printf("Overall correct classification rate: %.1f%s \n\n", ((correctPosReviews + correctNegReviews ) / (totalPosReviews + totalNegReviews)) * 100 ,percent);
+    System.out.printf("Overall correct classification rate: %.1f%s \n\n", ((correctPosReviews + correctNegReviews ) / (totalPosReviews + totalNegReviews)) * 100, percent);
     
     return sentence;
   }

@@ -19,45 +19,47 @@ public class SentimentAnalysisApp extends ReviewHandler {
 */
 public static void main(String[] args) throws FileNotFoundException  {
 
-try {
-  /** 
-  *@param grab java SentimentAnalysisApp <path_to_pos_words>  
-  * stores new file in argument 0 
-  *@param grab java SentimentAnalysisApp <path_to_neg_words> 
-    stores new file in argument 1
-  */
-  File positiveFile = new File(args[0]);
-  File negativeFile = new File(args[1]);
+    try 
+    {
+      /** 
+      *@param grab java SentimentAnalysisApp <path_to_pos_words>  
+      * stores new file in argument 0 
+      *@param grab java SentimentAnalysisApp <path_to_neg_words> 
+        stores new file in argument 1
+      */
+      File positiveFile = new File(args[0]);
+      File negativeFile = new File(args[1]);
 
-/** 
-  * @param positvefolder grab java SentimentAnalysisApp <path_to pos_reviews_folder> 
-  *  stores new file in argument 2 
-  * @param negitvefolder grab java SentimentAnalysisApp <path_to neg_reviews_folder> 
-  *  stores new file in argument 3
-  */
-  
-  File positiveFolder = new File(args[2]);
-  File negativeFolder = new File(args[3]);
+    /** 
+      * @param positvefolder grab java SentimentAnalysisApp <path_to pos_reviews_folder> 
+      *  stores new file in argument 2 
+      * @param negitvefolder grab java SentimentAnalysisApp <path_to neg_reviews_folder> 
+      *  stores new file in argument 3
+      */
 
-  /**
-  * creates review handler object
-  * Use this object to populate hashsets
-  */
-  ReviewHandler rw = new ReviewHandler();
- 
-  rw.populateSet(positiveFile);
-  rw.populateSet(negativeFile);
+      File positiveFolder = new File(args[2]);
+      File negativeFolder = new File(args[3]);
 
-  rw.findRealClass(positiveFolder, positiveFolder.listFiles());
-  rw.findRealClass(negativeFolder, negativeFolder.listFiles());
+      /**
+      * creates review handler object
+      * Use this object to populate hashsets
+      */
+      ReviewHandler rw = new ReviewHandler();
 
-  rw.toString();
-  
-}
-// catch any exceptions for files 
-catch (Exception e) {
-    e.printStackTrace();
-}
+      rw.populateSet(positiveFile);
+      rw.populateSet(negativeFile);
 
-}
+      rw.findRealClass(positiveFolder, positiveFolder.listFiles());
+      rw.findRealClass(negativeFolder, negativeFolder.listFiles());
+
+      rw.toString();
+
+    }
+    // catch any exceptions for files 
+    catch (Exception e) 
+    {
+        e.printStackTrace();
+    }
+
+  }
 }
